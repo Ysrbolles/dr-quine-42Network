@@ -19,6 +19,7 @@ $(NAME): $(OBJ)
 
 %.o : %.s
 		@$(NM) $(FLAGS) $< -o $@
+		
 
 clean:
 		@rm -rf $(OBJ)

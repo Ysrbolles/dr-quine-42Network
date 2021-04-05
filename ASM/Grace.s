@@ -1,10 +1,17 @@
 ; Comment.
 
-%macro FT 1
+%macro salam 1
+
+extern _main, _printf
 
 _main:
-    mov eax, 8
-    mov ebx, "Grace.s"
-    move ecx, 0777
-
+    %%str: db %1
+    mov rdi, %%str
+    mov rsi, rdi
+    call _printf
+   
 %endmacro
+
+%define str "; Comment."
+
+salam str

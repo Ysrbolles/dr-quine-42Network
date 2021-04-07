@@ -1,31 +1,17 @@
+COLLEEN = Colleen
+COLLEEN_SRC = Colleen.s
 
-NAME = libasm.a
+CC = nasm
+LD = gcc
+CCFLAGS = -f macho64
+LDFLAGS = -m64 -lc 2>&-
 
-SRC = ft_strlen.s
-
-OBJ = $(SRC:.s=.o)
-
-
-FLAGS = -f macho64
-
-NM = nasm
-
-all: $(NAME)
-
-
-$(NAME): $(OBJ)
-		@ar rcs $(NAME) $(OBJ)
-		@echo 'SUCCESS'
-
-%.o : %.s
-		@$(NM) $(FLAGS) $< -o $@
-		
-
+all: $(COLLEEN) $(GRACE) $(SULLY)
+$(COLLEEN):
+	@$(CC) $(CCFLAGS) $(COLLEEN_SRC) -o Colleen.o 
+	@$(LD) $(LDFLAGS) Colleen.o -o $(COLLEEN)
 clean:
-		@rm -rf $(OBJ)
-		@echo 'CLEAN'
-
+	rm -f Colleen.o
 fclean: clean
-		@rm -rf $(NAME)
-
-re: fclean clean
+	rm -f $(COLLEEN)
+re: fclean all

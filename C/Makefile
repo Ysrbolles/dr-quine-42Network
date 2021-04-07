@@ -1,18 +1,19 @@
 FLAGS = -Wall -Wextra -Werror
-
-SRCS = Colleen.c Grace.c Sully.c
+NAME = Colleen Grace Sully
 
 NAME: all
 
-all: Colleen Grace Sully
+all: $(NAME)
 
 Colleen: Colleen.c
 	gcc $(FLAGS) -c Colleen.c -o Colleen.o
 	gcc $(FLAGS) Colleen.o -o Colleen
 Grace: Grace.c
-	gcc $(FLAGS) Grace.c -o Grace
+	gcc $(FLAGS) -c Grace.c -o Grace.o
+	gcc $(FLAGS) Grace.o -o Grace
 Sully: Sully.c
-	gcc $(FLAGS) Sully.c -o Sully
+	gcc $(FLAGS) -c Sully.c -o Sully.o
+	gcc $(FLAGS) Sully.o -o Sully
 
 
 
